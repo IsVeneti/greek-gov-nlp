@@ -1,9 +1,12 @@
 import sys
+
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 from pdfminer.converter import XMLConverter, HTMLConverter, TextConverter
 from pdfminer.layout import LAParams
 import io
+import json
+import dload
 
 
 def pdfparser(data):
@@ -23,8 +26,13 @@ def pdfparser(data):
 
     print(data)
 
+agrUrl = "https://www.diavgeia.gov.gr/luminapi/api/search/export?q=organizationUid:%22100010899%22&sort=recent&wt=json"
+agrjsonurl = dload.json(agrUrl)
+# agrJson = json.load(agrUrl)
+print(agrjsonurl)
 
-pdfparser('/home/Serelia/Uni/Ptixiaki/pdf_files/9ΘΑΤ4653ΠΓ-9Ξ1.pdf')
+docUrl = 'https://diavgeia.gov.gr/doc/ΩΕΚ64653ΠΓ-2ΞΡ'
+# pdfparser('https://diavgeia.gov.gr/doc/ΩΕΚ64653ΠΓ-2ΞΡ')
 
 # if __name__ == '__main__':
 #     pdfparser(sys.argv[1])
