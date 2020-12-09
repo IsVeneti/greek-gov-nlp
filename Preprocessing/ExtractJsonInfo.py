@@ -5,9 +5,11 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 from pdfminer.converter import XMLConverter, HTMLConverter, TextConverter
 from pdfminer.layout import LAParams
+import pdfminer
 import io
 import json
 from urllib.request import urlopen
+
 
 def pdfparser(data):
     codec = 'utf-8'
@@ -26,7 +28,7 @@ def pdfparser(data):
             interpreter.process_page(page)
             data = retstr.getvalue()
 
-        print(data)
+        return data
 
 
 def jsontodocs(url):
@@ -36,7 +38,7 @@ def jsontodocs(url):
     # print(jstring.decode())
     doclist = []
     # json in gov link is a json object, that contains a json array
-    # which in turn contains each object with the iformation needed
+    # which in turn contains each object with the information needed
     # as well as the document url
     inside_jsonobj = jsonobj['decisionResultList']
     for j in inside_jsonobj:
@@ -47,10 +49,10 @@ def jsontodocs(url):
 agrUrl = "https://www.diavgeia.gov.gr/luminapi/api/search/export?q=organizationUid:%22100010899%22&sort=recent&wt=json"
 docUrl = 'https://diavgeia.gov.gr/doc/ΩΕΚ64653ΠΓ-2ΞΡ'
 
-doclist = jsontodocs(agrUrl)
-pdfparser(doclist[5])
-
-# pdfparser(docUrl)
+# doclist = jsontodocs(agrUrl)
+# pdfparser(doclist[5])
+# print(pdfminer.__version__)
+pdfparser(docUrl)
 
 # if __name__ == '__main__':
 #     pdfparser(sys.argv[1])

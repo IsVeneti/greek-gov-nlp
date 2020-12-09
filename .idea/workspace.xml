@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b34eda1-36ec-4818-afc7-182f3b11a901" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamedEntityRecognition/Spacy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamedEntityRecognition/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Preprocessing/ConvertPdf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Preprocessing/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/extract-pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/extract-pdf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/NamedEntityRecognition/NLTK.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/extract-pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/Preprocessing/ExtractJsonInfo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,25 +26,89 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="27" />
-    <option name="width" value="800" />
-    <option name="height" value="873" />
-  </component>
+  <component name="JupyterTrust" id="fa26bea3-c196-4d04-8482-7145fb76ceae" />
   <component name="ProjectId" id="1Ytg66VQCiGiHqKHfIJoJPewofr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SemanticLegalTexts" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Spacy">
+    <configuration name="ConvertPdf" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="greek-gov-nlp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/ConvertPdf.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ExtractJsonInfo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="greek-gov-nlp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Serelia\PycharmProjects\greek-gov-nlp\tools\ExtractJsonInfo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Spacy" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="greek-gov-nlp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NamedEntityRecognition" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NamedEntityRecognition/Spacy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="extract-pdf" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="greek-gov-nlp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -52,7 +122,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/extract-pdf.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Serelia\PycharmProjects\greek-gov-nlp\tools\ExtractJsonInfo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -63,10 +133,14 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Spacy" />
+        <item itemvalue="Python.ConvertPdf" />
         <item itemvalue="Python.extract-pdf" />
+        <item itemvalue="Python.ExtractJsonInfo" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -84,48 +158,70 @@
       <workItem from="1583766284595" duration="573000" />
       <workItem from="1583767135038" duration="224000" />
       <workItem from="1583767387378" duration="9687000" />
+      <workItem from="1604495174601" duration="2698000" />
+      <workItem from="1604822627899" duration="1722000" />
+      <workItem from="1604928882424" duration="3553000" />
+      <workItem from="1605278373513" duration="501000" />
+      <workItem from="1605358629780" duration="1280000" />
+      <workItem from="1605460550628" duration="667000" />
+      <workItem from="1605536113729" duration="2398000" />
+      <workItem from="1605708144876" duration="593000" />
+      <workItem from="1605787186953" duration="1907000" />
+      <workItem from="1605971590468" duration="749000" />
+      <workItem from="1606154221941" duration="2736000" />
+      <workItem from="1606399629493" duration="3437000" />
+      <workItem from="1606834993366" duration="1199000" />
+      <workItem from="1606918220380" duration="604000" />
+      <workItem from="1607093525017" duration="584000" />
     </task>
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="483" y="194" width="624" height="545" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1583767296601">
-      <screen x="0" y="27" width="1600" height="873" />
+    <state x="532" y="252" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604495934316">
+      <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state x="483" y="194" width="624" height="545" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.27.1600.873@0.27.1600.873" timestamp="1583767296601" />
-    <state width="1358" height="294" key="GridCell.Tab.0.bottom" timestamp="1583796997637">
-      <screen x="0" y="27" width="1600" height="873" />
+    <state x="532" y="252" key="#com.intellij.fileTypes.FileTypeChooser/1600.0.1280.1024/0.0.1600.900@0.0.1600.900" timestamp="1604495934316" />
+    <state x="580" y="205" key="FileChooserDialogImpl" timestamp="1604930444947">
+      <screen x="0" y="0" width="1600" height="900" />
     </state>
-    <state width="1358" height="294" key="GridCell.Tab.0.bottom/0.27.1600.873@0.27.1600.873" timestamp="1583796997637" />
-    <state width="1358" height="294" key="GridCell.Tab.0.center" timestamp="1583796997636">
-      <screen x="0" y="27" width="1600" height="873" />
+    <state x="580" y="205" key="FileChooserDialogImpl/1600.0.1280.1024/0.0.1600.900@0.0.1600.900" timestamp="1604930444947" />
+    <state width="1237" height="275" key="GridCell.Tab.0.bottom" timestamp="1606422059607">
+      <screen x="1600" y="0" width="1280" height="1024" />
     </state>
-    <state width="1358" height="294" key="GridCell.Tab.0.center/0.27.1600.873@0.27.1600.873" timestamp="1583796997636" />
-    <state width="1358" height="294" key="GridCell.Tab.0.left" timestamp="1583796997636">
-      <screen x="0" y="27" width="1600" height="873" />
+    <state width="1557" height="235" key="GridCell.Tab.0.bottom/1600.0.1280.1024/0.0.1600.900@0.0.1600.900" timestamp="1606171922867" />
+    <state width="1237" height="275" key="GridCell.Tab.0.bottom/1600.0.1280.1024/0.0.1600.900@1600.0.1280.1024" timestamp="1606422059607" />
+    <state width="1237" height="275" key="GridCell.Tab.0.center" timestamp="1606422059607">
+      <screen x="1600" y="0" width="1280" height="1024" />
     </state>
-    <state width="1358" height="294" key="GridCell.Tab.0.left/0.27.1600.873@0.27.1600.873" timestamp="1583796997636" />
-    <state width="1358" height="294" key="GridCell.Tab.0.right" timestamp="1583796997636">
-      <screen x="0" y="27" width="1600" height="873" />
+    <state width="1557" height="235" key="GridCell.Tab.0.center/1600.0.1280.1024/0.0.1600.900@0.0.1600.900" timestamp="1606171922867" />
+    <state width="1237" height="275" key="GridCell.Tab.0.center/1600.0.1280.1024/0.0.1600.900@1600.0.1280.1024" timestamp="1606422059607" />
+    <state width="1237" height="275" key="GridCell.Tab.0.left" timestamp="1606422059606">
+      <screen x="1600" y="0" width="1280" height="1024" />
     </state>
-    <state width="1358" height="294" key="GridCell.Tab.0.right/0.27.1600.873@0.27.1600.873" timestamp="1583796997636" />
-    <state x="460" y="291" key="com.intellij.ide.util.TipDialog" timestamp="1583767392022">
-      <screen x="0" y="27" width="1600" height="873" />
+    <state width="1557" height="235" key="GridCell.Tab.0.left/1600.0.1280.1024/0.0.1600.900@0.0.1600.900" timestamp="1606171922867" />
+    <state width="1237" height="275" key="GridCell.Tab.0.left/1600.0.1280.1024/0.0.1600.900@1600.0.1280.1024" timestamp="1606422059606" />
+    <state width="1237" height="275" key="GridCell.Tab.0.right" timestamp="1606422059607">
+      <screen x="1600" y="0" width="1280" height="1024" />
     </state>
-    <state x="460" y="291" key="com.intellij.ide.util.TipDialog/0.27.1600.873@0.27.1600.873" timestamp="1583767392022" />
+    <state width="1557" height="235" key="GridCell.Tab.0.right/1600.0.1280.1024/0.0.1600.900@0.0.1600.900" timestamp="1606171922867" />
+    <state width="1237" height="275" key="GridCell.Tab.0.right/1600.0.1280.1024/0.0.1600.900@1600.0.1280.1024" timestamp="1606422059607" />
+    <state x="301" y="95" key="SettingsEditor" timestamp="1604495730309">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="301" y="95" key="SettingsEditor/1600.0.1280.1024/0.0.1600.900@0.0.1600.900" timestamp="1604495730309" />
+    <state x="463" y="190" width="672" height="678" key="search.everywhere.popup" timestamp="1604496722127">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="463" y="190" width="672" height="678" key="search.everywhere.popup/1600.0.1280.1024/0.0.1600.900@0.0.1600.900" timestamp="1604496722127" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/greek_gov_nlp$ExtractJsonInfo.coverage" NAME="ExtractJsonInfo Coverage Results" MODIFIED="1604929474763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/greek_gov_nlp$ExtractPdf.coverage" NAME="ExtractPdf Coverage Results" MODIFIED="1604497060983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/greek_gov_nlp$extract_pdf.coverage" NAME="extract-pdf Coverage Results" MODIFIED="1583796997629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/greek_gov_nlp$Spacy.coverage" NAME="Spacy Coverage Results" MODIFIED="1606402836410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NamedEntityRecognition" />
+    <SUITE FILE_PATH="coverage/greek_gov_nlp$ConvertPdf.coverage" NAME="ConvertPdf Coverage Results" MODIFIED="1604930387002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
   </component>
 </project>
