@@ -1,17 +1,15 @@
 import logging
 import socket
-import sys
-import urllib
+
 from urllib.error import HTTPError, URLError
 import requests
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
-from pdfminer.converter import XMLConverter, HTMLConverter, TextConverter
+from pdfminer.converter import  TextConverter
 from pdfminer.layout import LAParams
-import pdfminer
+
 import io
 import json
-from urllib.request import urlopen
 
 
 def pdfparser(url):
@@ -68,31 +66,25 @@ def jsontodocs(url):
     return doclist
 
 
-def to_doccano_dataset(textList: list,filename: str):
+def to_doccano_dataset(textList: list, filename: str):
     print("Writing dataset to txt file...")
-    textFile = open(filename, 'w')
+    text_file = open(filename, 'w')
     for element in textList:
-        textFile.write(element + "\n")
-    textFile.close()
+        text_file.write(element + "\n")
+    text_file.close()
 
 
-def replace_newline_with_space(textList: list):
-    print("Replacing newline with space in text dataset...")
-    resultList = []
-    for element in textList:
-        resultList.append(element.replace('\n', ' '))
-    return resultList
+
 
 
 agrUrl = "https://www.diavgeia.gov.gr/luminapi/api/search/export?q=organizationUid:%22100015981%22&sort=recent&wt=json"
 docUrl = 'https://diavgeia.gov.gr/doc/ΩΕΚ64653ΠΓ-2ΞΡ'
 
-doclist = jsontodocs(agrUrl)
-mylist = replace_newline_with_space(doclist)
-to_doccano_dataset(mylist,"doccano_agr_dataset_400.txt")
+# doclist = jsontodocs(agrUrl)
+# mylist = replace_newline_with_space(doclist)
+# to_doccano_dataset(mylist,"doccano_agr_dataset_400.txt")
 # pdfparser(doclist[5])
 # print(pdfminer.__version__)
 # pdfparser(docUrl)
 
-# if __name__ == '__main__':
-#     pdfparser(sys.argv[1])
+

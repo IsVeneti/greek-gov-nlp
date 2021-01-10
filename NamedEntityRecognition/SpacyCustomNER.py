@@ -1,30 +1,56 @@
 import json
-# from doccano_transformer.datasets import NERDataset
-# from doccano_transformer.utils import read_jsonl
-# # with open('custom_entities1.json1', 'r') as myfile:
-# #     lines = myfile.readlines()
-#
-# dataset = read_jsonl(filepath='custom_entities1.json1', dataset=NERDataset, encoding='utf-8')
-# spacy_obj = dataset.to_spacy(tokenizer=str.split)
-# print(spacy_obj)
-# # with open('dataset.json', 'w') as f:
-# #   for item in spacy_obj:
-# #     f.write(item['data'])
-# for line in lines:
-#     line = json.loads(line)
-#     if "labels" in line:
-#         line["entities"] = line.pop("labels")
-#     else:
-#         line["entities"] = []
-# print(line["entities"])
+import spacy
+import random
+from spacy.util import minibatch, compounding
+from pathlib import Path
+from Preprocessing.ExtractJsonInfo import pdfparser
+from Utils.doccanoUtils import convert_doccano_to_spacy
+import spacy
 
-# tmp_ents = []
-#
-# for e in line["entities"]:
-#     tmp_ents.append({"start": e[0], "end": e[1], "label": e[2]})
-#     line["entities"] = tmp_ents
-#     print(line["entities"])
+from Utils.documentUtils import replace_newline_with_space
 
-# print(json.dumps({"entities": line["entities"], "text": line["text"]},ensure_ascii=False).encode('utf8').decode())
-# jsonobj = json.dumps(json_file, ensure_ascii=False).encode('utf8')
-# print(lines)
+
+# Load pre-existing spacy model
+nlp = spacy.load('el_core_news_lg')
+
+# Getting the pipeline component
+ner = nlp.get_pipe("ner")
+
+train_data_origin = convert_doccano_to_spacy("custom_entities1.json1")
+# fine up to 50
+train_data = train_data_origin[:2]
+
+for _, annotations in train_data:
+    for ent in annotations.get("entities"):
+        ner.add_label(ent[2])
+
+# Disable pipeline components you dont need to change
+pipe_exceptions = ["ner", "trf_wordpiecer", "trf_tok2vec"]
+unaffected_pipes = [pipe for pipe in nlp.pipe_names if pipe not in pipe_exceptions]
+
+# TRAINING THE MODEL
+with nlp.disable_pipes(*unaffected_pipes):
+
+  # Training for 30 iterations
+  for iteration in range(2):
+
+    # shuufling examples  before every iteration
+    random.shuffle(train_data)
+    losses = {}
+    # batch up the examples using spaCy's minibatch
+    batches = minibatch(train_data, size=compounding(4.0, 32.0, 1.001))
+    for batch in batches:
+        texts, annotations = zip(*batch)
+        nlp.update(
+                    texts,  # batch of texts
+                    annotations,  # batch of annotations
+                    drop=0.5,  # dropout - make it harder to memorise data
+                    losses=losses,
+                )
+        print("Losses", losses)
+
+# doc_url = "https://diavgeia.gov.gr/doc/ΨΥΦΩ465ΦΥΟ-ΨΟ6"
+# text = pdfparser(doc_url)
+# text = replace_newline_with_space(text)
+# doc = nlp(text)
+# print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
