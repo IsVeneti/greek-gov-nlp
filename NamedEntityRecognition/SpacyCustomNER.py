@@ -73,7 +73,3 @@ doc = nlp(text)
 print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
 
 
-# Save the  model to directory
-output_dir = Path('CustomNERData/')
-nlp.to_disk(output_dir)
-print("Saved model to", output_dir)
