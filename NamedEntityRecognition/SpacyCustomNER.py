@@ -62,7 +62,7 @@ with nlp.disable_pipes(*unaffected_pipes), warnings.catch_warnings():
                     )
             print("Losses", losses)
 # Save the  model to directory
-output_dir = Path('customNerSpacy/')
+output_dir = Path('CustomNERData/')
 nlp.to_disk(output_dir)
 print("Saved model to", output_dir)
 
