@@ -11,6 +11,7 @@ import pandas as pd
 import io
 import json
 
+from Utils.FeatherUtils import save_dict_list_to_feather, read_feather_local_dataset
 from Utils.PathUtils import add_path_to_local_dataset_str
 
 
@@ -104,18 +105,7 @@ def save_docs_dataset(textList: list, filename: str):
     text_file.close()
 
 
-def save_dict_list_to_feather(dataset_list: list, filename: str):
-    print("Writing dataset to feather...")
-    filename = filename + ".ftr"
-    path = add_path_to_local_dataset_str(filename)
-    dataset_list_df = pd.DataFrame(dataset_list)
-    dataset_list_df.to_feather(path)
 
-
-def read_feather(filename):
-    filename = filename + ".ftr"
-    path = add_path_to_local_dataset_str(filename)
-    return pd.read_feather(path)
 
 
 agrUrl = "https://www.diavgeia.gov.gr/luminapi/api/search/export?q=organizationUid:%22100015981%22&sort=recent&wt=json"
@@ -125,7 +115,7 @@ health_url = "https://diavgeia.gov.gr/luminapi/api/search/export?q=organizationU
 data_list = json_to_meta(health_url, 1000)
 feather_file = "DptOfHealth1000"
 save_dict_list_to_feather(data_list, feather_file)
-readF = read_feather(feather_file)
+readF = read_feather_local_dataset(feather_file)
 print(readF)
 
 # doclist = jsontodocs(agrUrl)
