@@ -122,8 +122,8 @@ agrUrl = "https://www.diavgeia.gov.gr/luminapi/api/search/export?q=organizationU
 docUrl = 'https://diavgeia.gov.gr/doc/ΩΕΚ64653ΠΓ-2ΞΡ'
 health_url = "https://diavgeia.gov.gr/luminapi/api/search/export?q=organizationUid:%22100010899%22&sort=recent&wt=json"
 
-data_list = json_to_meta(health_url, 10)
-feather_file = "AndLetMePlayAmongTheStars"
+data_list = json_to_meta(health_url, 1000)
+feather_file = "DptOfHealth1000"
 save_dict_list_to_feather(data_list, feather_file)
 readF = read_feather(feather_file)
 print(readF)
