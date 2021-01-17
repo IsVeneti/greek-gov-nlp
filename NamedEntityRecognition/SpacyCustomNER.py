@@ -8,7 +8,7 @@ from spacy import gold
 from spacy.util import minibatch, compounding
 from pathlib import Path
 from Preprocessing.ExtractJsonInfo import pdfparser
-from Utils.PathUtils import add_path_to_project_root_str
+from Utils.PathUtils import add_path_to_project_root_str, add_path_to_project_root
 from Utils.doccanoUtils import convert_doccano_to_spacy
 import spacy
 import pandas as pd
@@ -22,9 +22,9 @@ nlp = spacy.load('el_core_news_lg')
 ner = nlp.get_pipe("ner")
 
 
-def json1_to_train_data(json1_path):
+def json1_to_train_data(json1_path, data_num):
     train_data_origin = convert_doccano_to_spacy(json1_path)
-    train_data = train_data_origin[:100]
+    train_data = train_data_origin[:data_num]
     return train_data
 
 
@@ -34,7 +34,7 @@ def add_new_labels(train_data):
             ner.add_label(ent[2])
 
 
-def disable_uneeded_pipes():
+def disable_unneeded_pipes():
     # Disable pipeline components you dont need to change
     pipe_exceptions = ["ner", "trf_wordpiecer", "trf_tok2vec"]
     unaffected_pipes = [pipe for pipe in nlp.pipe_names if pipe not in pipe_exceptions]
@@ -42,17 +42,20 @@ def disable_uneeded_pipes():
 
 
 def save_model(model_path=""):
+    #TODO: make it create the directory
+
     # Save the  model to directory
-    nerd_path = add_path_to_project_root_str("CustomNERData/")
-    output_dir = nerd_path / model_path
-    nlp.to_disk(output_dir)
-    print("Saved model to", output_dir)
+
+    # nerd_path = add_path_to_project_root_str("CustomNERData/")
+    # output_dir = nerd_path / model_path
+    nlp.to_disk("CustomNERData/")
+    print("Saved model to ", "CustomNERData/")
 
 
 def custom_NER_train(train_data):
     add_new_labels(train_data)
 
-    unaffected_pipes = disable_uneeded_pipes()
+    unaffected_pipes = disable_unneeded_pipes()
 
     # TRAINING THE MODEL
     with nlp.disable_pipes(*unaffected_pipes), warnings.catch_warnings():
@@ -77,11 +80,12 @@ def custom_NER_train(train_data):
                 print("Losses", losses)
     save_model()
 
+#
+# custom_NER_train(json1_to_train_data(
+#     add_path_to_project_root(["FromDoccanoDataset", "doccano_subjects.json1"]),400))
 
-custom_NER_train(json1_to_train_data("custom_entities1.json1"))
-
-doc_url = "https://diavgeia.gov.gr/doc/ΨΥΦΩ465ΦΥΟ-ΨΟ6"
-text = pdfparser(doc_url)
-text = replace_newline_with_space(text)
-doc = nlp(text)
-print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
+# doc_url = "https://diavgeia.gov.gr/doc/ΨΥΦΩ465ΦΥΟ-ΨΟ6"
+# text = pdfparser(doc_url)
+# text = replace_newline_with_space(text)
+# doc = nlp(text)
+# print("Entities", [(ent.text, ent.label_) for ent in doc.ents])

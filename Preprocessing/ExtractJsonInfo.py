@@ -97,12 +97,7 @@ def json_to_meta(url: str, max_results: int):
     return meta_list
 
 
-def save_docs_dataset(textList: list, filename: str):
-    print("Writing dataset to txt file...")
-    text_file = open(filename + ".txt", 'w')
-    for element in textList:
-        text_file.write(element + "\n")
-    text_file.close()
+
 
 
 

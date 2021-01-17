@@ -19,9 +19,8 @@ def add_path_to_project_root(paths_list: list) -> Path:
         Returns:
             The full path to the project root, with the added path to the folder/file
     """
-    project_root = get_project_root()
+    full_path = get_project_root()
     for path in paths_list:
-        full_path = project_root
         full_path = full_path / path
     return full_path
 
@@ -52,3 +51,5 @@ def add_path_to_local_dataset_str(path: str) -> Path:
     local_dataset = get_project_root() / "LocalDataset"
     full_path = local_dataset / path
     return full_path
+
+
