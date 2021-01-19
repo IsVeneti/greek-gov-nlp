@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 
@@ -40,7 +41,7 @@ def add_path_to_project_root_str(path: str) -> Path:
 
 
 def add_path_to_local_dataset_str(path: str) -> Path:
-    """Take a string with folders and/or file names and add it to the local dataset path
+    """Take a string with file name and add it to the local dataset path
 
         Args:
             path: A string with folders and/or file needed to be added to the path
@@ -53,3 +54,21 @@ def add_path_to_local_dataset_str(path: str) -> Path:
     return full_path
 
 
+def add_path_to_local_dataset_list(paths_list: list) -> Path:
+    """Take a list with folders and/or file names and add it to the local dataset path
+
+        Args:
+            paths_list: A list with folders and/or file needed to be added to the path
+
+        Returns:
+            The full path to the project root, with the added path to the folder/file
+    """
+    full_path = get_project_root() / "LocalDataset"
+    for path in paths_list:
+        full_path = full_path / path
+    return full_path
+
+
+def make_recursive_dir(path: Path):
+    if not os.path.exists(path):
+        os.makedirs(path)
