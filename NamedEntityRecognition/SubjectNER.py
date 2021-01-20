@@ -3,7 +3,7 @@ from datetime import datetime
 import spacy
 import pandas as pd
 
-from Utils.FeatherUtils import read_feather_local_dataset
+from Utils.FeatherUtils import read_feather_local_dataset, save_to_feather_local_dataset
 from Utils.PathUtils import add_path_to_project_root
 from Utils.doccanoUtils import save_docs_dataset
 
@@ -39,6 +39,7 @@ def subject_money_meta(dataset: pd.DataFrame) -> pd.DataFrame:
             'documentUrl': row['documentUrl'],
             'subject': row['subject'],
             'decisionTypeUid': row['decisionTypeUid'],
+            'decisionTypeLabel': row['decisionTypeLabel'],
             'organizationUid': row['organizationUid'],
             'organizationLabel': row['organizationLabel'],
             'money': float_money
@@ -46,25 +47,10 @@ def subject_money_meta(dataset: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(money_meta_list)
 
 
-def plot_list_date_money(dataset: pd.DataFrame, date_type="submissionTimestamp"):
-    date_money_dict = dict()
-    date_options = ["issueDate", "submissionTimestamp"]
+save_to_feather_local_dataset(subject_money_meta(health_ds), "MetadataWithMoney")
 
-    if date_type not in date_options:
-        raise ValueError("Invalid date_type. Expected one of: %s" % date_options)
-
-    for i, row in dataset.iterrows():
-        date_money_dict.setdefault(row[date_type].date(), []).append(row["money"])
-    return date_money_dict
-
-
-def plot_list_decision_type_money(dateset: pd.DataFrame):
-    # FIXME: plot_list_decision_type_money
-    print("FIXME")
-
-
-money_test = subject_money_meta(health_ds)
-print(plot_list_date_money(money_test))
-
+# money_test = subject_money_meta(health_ds)
+# money_dict = list_decision_type_money(money_test)
+# print(plot_decision_type_money_sum(money_dict))
 # print(dataset['subject'].to_list())
 # save_docs_dataset(dataset['subject'].to_list(), "subject_doccano_dataset1")

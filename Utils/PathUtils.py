@@ -69,6 +69,19 @@ def add_path_to_local_dataset_list(paths_list: list) -> Path:
     return full_path
 
 
+def add_path_to_plot_images_str(path: str) -> Path:
+    """Take a string with file name and add it to the local dataset path
+
+        Args:
+            path: A string with folders and/or file needed to be added to the path
+
+        Returns:
+            The full path to the project root, with the added path to the folder/file
+    """
+    local_dataset = get_project_root() / "PlotImages"
+    full_path = local_dataset / path
+    return full_path
+
 def make_recursive_dir(path: Path):
     if not os.path.exists(path):
         os.makedirs(path)

@@ -22,8 +22,17 @@ mydict = dict()
 keys = [["a", 1], ["a", 2], ["a", 3], ["a", 4], ["b", 1], ["b", 2], ["b", 3], ["c", 1]]
 df = pd.DataFrame(keys,columns=["chars","ints"])
 
-# mydict.setdefault(df["chars"],[]).append(df["ints"])
-# for i, row in df.iterrows():
-#     mydict.setdefault(row["chars"],[]).append(row["ints"])
 
+for i, row in df.iterrows():
+    mydict.setdefault(row["chars"],[]).append(row["ints"])
+
+print(mydict)
+print("Len: ", len(mydict.values()))
+secondDict= {}
+for i in mydict:
+    sum = 0
+    for j in mydict[i]:
+        sum = sum + j
+    secondDict[i] = sum
+print(secondDict)
 # plot_list_date("a", "nope")
