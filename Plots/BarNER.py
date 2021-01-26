@@ -1,14 +1,16 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import numpy as np
 
 from NamedEntityRecognition.MoneyMetadataManipulator import decision_type_money_dict, money_sum_dict, date_money_dict, \
-    date_str_money_dict, money_sum_dict_df
+    date_str_money_dict, money_sum_df
 from Utils.FeatherUtils import read_feather_local_dataset
 from Utils.PathUtils import add_path_to_project_root_str, add_path_to_plot_images_str
 
 
-def categorical_horizontal_bar(dataset_df: pd.DataFrame, filename: str, fig_dim=(10, 5), title="", x_label="", y_label=""):
+def categorical_horizontal_bar(dataset_df: pd.DataFrame, filename: str, fig_dim=(10, 5), title="", x_label="",
+                               y_label=""):
     sns.set_theme(style="whitegrid")
 
     fig, ax = plt.subplots(figsize=fig_dim)
@@ -19,8 +21,38 @@ def categorical_horizontal_bar(dataset_df: pd.DataFrame, filename: str, fig_dim=
     # plt.gca().invert_yaxis()
     png_file = filename + ".png"
     path_to_png = add_path_to_plot_images_str(png_file)
-    # plt.show()
     plt.savefig(path_to_png)
+    plt.show()
+
+
+def categorical_horizontal_bar_numbers(dataset, filename: str,fig_dim=(10, 5), title="", x_label="",
+                               y_label="",data_type= "date"):
+
+    data_options = ["date", "decision"]
+    if data_type not in data_options:
+        raise ValueError("Invalid date_type. Expected one of: %s" % data_options)
+
+    fig, ax = plt.subplots(figsize=fig_dim)
+    width = 0.75  # the width of the bars
+    ind = np.arange(len(dataset.values()))  # the x locations for the groups
+    ax.barh(ind, dataset.values(), width, color="blue")
+    ax.set_yticks(ind + width / 2)
+    ax.set_yticklabels(dataset.keys(), minor=False)
+    plt.grid(False)
+    plt.title(title)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    for i, v in enumerate(dataset.values()):
+        if data_type == data_options[0]:
+            ax.text(v + 5000000, i, s=str(v), color='blue',va='center')
+        elif data_type == data_options[1]:
+            ax.text(v,i, s=str(v), color='blue',va='center', fontweight='bold')
+
+    png_file = filename + ".png"
+    path_to_png = add_path_to_plot_images_str(png_file)
+    plt.savefig(path_to_png)
+    plt.show()
+    # plt.savefig(path_to_png, dpi=300, format='png', bbox_inches='tight')
 
 
 def shadowed_horizontal_bar():
@@ -50,12 +82,8 @@ def shadowed_horizontal_bar():
     plt.show()
 
 
-money_test = read_feather_local_dataset("MetadataWithMoney")
-money_dict = date_str_money_dict(money_test)
-# print(type(money_dict['submissionTimestamp']))
-a = money_sum_dict_df(money_dict)
-print(a)
-categorical_horizontal_bar(a, "date_money_bar", title="Date - Money Bar Chart", y_label="Date", x_label="Money", fig_dim=(10, 5))
+
+
 # mytry()
 
 # print(a)
