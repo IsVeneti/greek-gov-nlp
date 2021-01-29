@@ -48,7 +48,7 @@ def categorical_horizontal_bar_numbers(dataset, filename: str,fig_dim=(10, 5), t
         if data_type == data_options[0]:
             ax.text(v + 5000000, i, s=fmt.format_eng(v), color='blue',va='center')
         elif data_type == data_options[1]:
-            ax.text(v,i, s=fmt.format_eng(v), color='blue',va='center', fontweight='bold')
+            ax.text(v+2000000,i, s=fmt.format_eng(v), color='blue',va='center', fontweight='bold')
 
     png_file = filename + ".png"
     path_to_png = add_path_to_plot_images_str(png_file)
