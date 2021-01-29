@@ -26,9 +26,9 @@ result_dict2 = money_sum_dict(money_dict)
 #                                    x_label="Money", fig_dim=(12, 8))
 
 
-categorical_horizontal_bar_numbers(result_dict, "issue_date_money_num_bar",title="Issue Date - Money Bar Chart",
+categorical_horizontal_bar_numbers(result_dict, "issue_date_money_num_bar_readable",title="Issue Date - Money Bar Chart",
                            y_label="Issue Date", x_label="Money", fig_dim=(15, 13))
-categorical_horizontal_bar_numbers(result_dict2, "submission_date_money_num_bar",
+categorical_horizontal_bar_numbers(result_dict2, "submission_date_money_num_bar_readable",
                                    title="Submission Date - Money Bar Chart", y_label="Submission Date",
                                    x_label="Money", fig_dim=(15, 13))
 

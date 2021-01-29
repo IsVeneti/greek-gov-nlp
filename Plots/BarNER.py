@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import numpy as np
+from matplotlib.ticker import EngFormatter
 
 from NamedEntityRecognition.MoneyMetadataManipulator import decision_type_money_dict, money_sum_dict, date_money_dict, \
     date_str_money_dict, money_sum_df
@@ -27,7 +28,7 @@ def categorical_horizontal_bar(dataset_df: pd.DataFrame, filename: str, fig_dim=
 
 def categorical_horizontal_bar_numbers(dataset, filename: str,fig_dim=(10, 5), title="", x_label="",
                                y_label="",data_type= "date"):
-
+    fmt = EngFormatter(places=0)
     data_options = ["date", "decision"]
     if data_type not in data_options:
         raise ValueError("Invalid date_type. Expected one of: %s" % data_options)
@@ -42,11 +43,12 @@ def categorical_horizontal_bar_numbers(dataset, filename: str,fig_dim=(10, 5), t
     plt.title(title)
     plt.xlabel(x_label)
     plt.ylabel(y_label)
+    ax.xaxis.set_major_formatter(fmt)
     for i, v in enumerate(dataset.values()):
         if data_type == data_options[0]:
-            ax.text(v + 5000000, i, s=str(v), color='blue',va='center')
+            ax.text(v + 5000000, i, s=fmt.format_eng(v), color='blue',va='center')
         elif data_type == data_options[1]:
-            ax.text(v,i, s=str(v), color='blue',va='center', fontweight='bold')
+            ax.text(v,i, s=fmt.format_eng(v), color='blue',va='center', fontweight='bold')
 
     png_file = filename + ".png"
     path_to_png = add_path_to_plot_images_str(png_file)

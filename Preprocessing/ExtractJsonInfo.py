@@ -31,7 +31,6 @@ def pdfparser(url):
     with io.BytesIO(response.content) as open_pdf_file:
         rsrcmgr = PDFResourceManager()
         retstr = io.StringIO()
-
         laparams = LAParams()
         device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
         # Create a PDF interpreter object.
