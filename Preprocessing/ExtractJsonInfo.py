@@ -7,6 +7,7 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
+import pdfminer
 import pandas as pd
 import io
 import json
@@ -106,12 +107,12 @@ agrUrl = "https://www.diavgeia.gov.gr/luminapi/api/search/export?q=organizationU
 docUrl = 'https://diavgeia.gov.gr/doc/ΩΕΚ64653ΠΓ-2ΞΡ'
 health_url = "https://diavgeia.gov.gr/luminapi/api/search/export?q=organizationUid:%22100010899%22&sort=recent&wt=json"
 
-data_list = json_to_meta(health_url, 1000)
-feather_file = "DptOfHealth1000"
-save_dict_list_to_feather(data_list, feather_file)
-readF = read_feather_local_dataset(feather_file)
-print(readF)
-
+# data_list = json_to_meta(health_url, 60)
+# feather_file = "DptOfHealth1000"
+# save_dict_list_to_feather(data_list, feather_file)
+# readF = read_feather_local_dataset(feather_file)
+# print(readF)
+# print(pdfminer.__version__)
 # doclist = jsontodocs(agrUrl)
 # mylist = replace_newline_with_space(doclist)
 # to_doccano_dataset(mylist,"doccano_agr_dataset_400.txt")
