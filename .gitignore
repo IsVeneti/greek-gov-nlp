@@ -79,3 +79,4 @@ venv/
 
 # Because the file is too big and it's easy to recompile
 CustomNERData/*
+!CustomNERData/.keep
