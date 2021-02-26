@@ -14,6 +14,8 @@ import json
 
 from Utils.FeatherUtils import save_dict_list_to_feather, read_feather_local_dataset
 from Utils.PathUtils import add_path_to_local_dataset_str
+from Utils.documentUtils import replace_newline_with_space
+from Utils.generalUtils import save_to_txt
 
 
 def pdfparser(url):
@@ -97,25 +99,56 @@ def json_to_meta(url: str, max_results: int):
     return meta_list
 
 
+def json_to_meta_obj(url: str, ada_q: str):
+    print("Requesting Json Objects...")
+    data = requests.get(url)
+    jsonobj = json.loads(data.text)
+    meta_obj = []
 
+    # json in gov link is a json object, that contains a json array
+    # which in turn contains each object with the information needed
+    # as well as the document url
+    inside_jsonobj = jsonobj['decisionResultList']
 
+    for count, obj in enumerate(inside_jsonobj):
+        if count % 50 == 0:
+            print("Json Object ", count)
+        if obj['ada'] == ada_q:
+            meta_obj = {
+                'ada': obj['ada'],
+                'protocolNumber': obj['protocolNumber'],
+                'issueDate': obj['issueDate'],
+                'submissionTimestamp': obj['submissionTimestamp'],
+                'documentUrl': obj['documentUrl'],
+                'subject': obj['subject'],
+                'decisionTypeUid': obj['decisionTypeUid'],
+                'decisionTypeLabel': obj['decisionTypeLabel'],
+                'organizationUid': obj['organizationUid'],
+                'organizationLabel': obj['organizationLabel']
+            }
+            print(count)
+            break
 
-
+    return meta_obj
 
 
 agrUrl = "https://www.diavgeia.gov.gr/luminapi/api/search/export?q=organizationUid:%22100015981%22&sort=recent&wt=json"
 docUrl = 'https://diavgeia.gov.gr/doc/ΩΕΚ64653ΠΓ-2ΞΡ'
 health_url = "https://diavgeia.gov.gr/luminapi/api/search/export?q=organizationUid:%22100010899%22&sort=recent&wt=json"
-
+zeroUrl = "https://diavgeia.gov.gr/doc/ΨΤΙΦ465ΦΥΟ-45Π"
+zeroADA = "ΨΤΙΦ465ΦΥΟ-45Π"
 # data_list = json_to_meta(health_url, 60)
 # feather_file = "DptOfHealth1000"
 # save_dict_list_to_feather(data_list, feather_file)
 # readF = read_feather_local_dataset(feather_file)
 # print(readF)
 # print(pdfminer.__version__)
-# doclist = jsontodocs(agrUrl)
+# doclist = jsontodocs(Url)
 # mylist = replace_newline_with_space(doclist)
 # to_doccano_dataset(mylist,"doccano_agr_dataset_400.txt")
-# pdfparser(doclist[5])
+meta_obj = json_to_meta_obj(health_url,zeroADA)
+text_save = replace_newline_with_space(pdfparser(meta_obj['documentUrl']))
+save_to_txt(text_save, "zeroUrlText")
+# save_to_txt(meta_obj['subject'],"zeroUrlSubject")
 # print(pdfminer.__version__)
 # pdfparser(docUrl)

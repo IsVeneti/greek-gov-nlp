@@ -9,8 +9,8 @@ from Utils.doccanoUtils import save_docs_dataset
 
 health_ds = read_feather_local_dataset("DptOfHealth1000")
 
-# nlp = spacy.load("el_core_news_lg")
-nlp = spacy.load("../CustomNERData")
+nlp = spacy.load("el_core_news_lg")
+# nlp = spacy.load("../CustomNERData")
 
 
 def money_to_float(doc: spacy.tokens.doc.Doc) -> float:
@@ -24,6 +24,25 @@ def money_to_float(doc: spacy.tokens.doc.Doc) -> float:
                     money = money.replace(",", ".")
                     float_money = float(money)
     return float_money
+
+
+def label_count(doc: spacy.tokens.doc.Doc) -> int:
+    count = 0
+    for entity in doc.ents:
+        count = count + 1
+    return count
+
+
+def subject_label_counter(dataset: pd.DataFrame) -> pd.DataFrame:
+    label_count_list = []
+    for i, row in dataset.iterrows():
+        doc = nlp(row['subject'])
+        labelc = label_count(doc)
+        label_count_list.append({
+            'ada': row['ada'],
+            'labelCount': labelc
+        })
+    return pd.DataFrame(label_count_list)
 
 
 def subject_money_meta(dataset: pd.DataFrame) -> pd.DataFrame:
@@ -47,7 +66,10 @@ def subject_money_meta(dataset: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(money_meta_list)
 
 
-save_to_feather_local_dataset(subject_money_meta(health_ds), "MetadataWithMoney")
+# save_to_feather_local_dataset(subject_label_counter(health_ds), "LabelCountCNERD")
+save_to_feather_local_dataset(subject_label_counter(health_ds), "LabelCountLG")
+# save_to_feather_local_dataset(subject_money_meta(health_ds), "MetadataWithMoney")
+
 
 # money_test = subject_money_meta(health_ds)
 # money_dict = list_decision_type_money(money_test)

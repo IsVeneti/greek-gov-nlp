@@ -1,38 +1,57 @@
+import codecs
+import io
 from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
+import spacy
+# nlp = spacy.load("../CustomNERData")
+nlp = spacy.load("el_core_news_lg")
 
-from Utils.PathUtils import make_recursive_dir
+# with open("zeroUrlText.txt", "r", encoding='utf8') as text_file:
+#     text = text_file.read()
 
-dt = "18/01/2021 02:00:00"
-date_time_obj = datetime.strptime(dt, '%d/%m/%Y %H:%M:%S')
+with open("zeroUrlSubject.txt", "r", encoding='utf8') as text_file:
+    text = text_file.read()
 
+doc = nlp(text)
 
-# print(date_time_obj.date())
-
-def plot_list_date(dataset, date_type):
-    date_options = ["issueDate", "submissionTimestamp"]
-    if date_type not in date_options:
-        raise ValueError("Invalid date type. Expected one of: %s" % date_options)
-    print(date_type)
-
-
-mydict = dict()
-keys = [["a", 1], ["a", 2], ["a", 3], ["a", 4], ["b", 1], ["b", 2], ["b", 3], ["c", 1]]
-df = pd.DataFrame(keys,columns=["chars","ints"])
+for entity in doc.ents:
+  print(entity.text,'--- ',entity.label_)
 
 
-for i, row in df.iterrows():
-    mydict.setdefault(row["chars"],[]).append(row["ints"])
-
-print(mydict)
-print("Len: ", len(mydict.values()))
-secondDict= {}
-for i in mydict:
-    sum = 0
-    for j in mydict[i]:
-        sum = sum + j
-    secondDict[i] = sum
-print(secondDict)
-# plot_list_date("a", "nope")
+# from matplotlib.ticker import EngFormatter
+# import numpy as np
+# import matplotlib.pyplot as plt
+#
+#
+# example_dict = {"A random very long string to showcase the example": 50000000,
+#                 "Another random smaller string": 3500000000,
+#                 "A small string": 700000000,
+#                 "String": 100000000,
+#                 "Another larger than usual example string that will get sadly cut": 70000000}
+#
+#
+# def categorical_horizontal_bar_numbers1(dataset, fig_dim=(10, 5), title="", x_label="",
+#                                         y_label=""):
+#     fmt = EngFormatter(places=0)
+#
+#     fig, ax = plt.subplots(figsize=fig_dim)
+#     width = 0.75  # the width of the bars
+#     ind = np.arange(len(dataset.values()))  # the x locations for the groups
+#     ax.barh(ind, dataset.values(), width, color="blue")
+#     ax.set_yticks(ind + width / 2)
+#     ax.set_yticklabels(dataset.keys(), minor=False)
+#
+#     plt.grid(False)
+#     plt.title(title)
+#     plt.xlabel(x_label)
+#     plt.ylabel(y_label)
+#     ax.xaxis.set_major_formatter(fmt)
+#
+#     for i, v in enumerate(dataset.values()):
+#         ax.text(v + 500, i, s=fmt.format_eng(v), color='blue', va='center')
+#
+#     plt.show()
+#
+# categorical_horizontal_bar_numbers1(example_dict,fig_dim=(30,10))
