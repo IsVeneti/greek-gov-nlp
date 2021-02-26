@@ -64,3 +64,4 @@ label_dict = label_number_dict(label_CNERD,label_LG,"CNERD Model","LG Model")
 # print(label_dict)
 categorical_horizontal_bar_numbers(label_dict, "entities_sum_bar_readable",title="Model - Entities Number Bar Chart",
                            y_label="Model", x_label="Entities Number",data_type="label",fig_dim=(12,6),title_fontsize=25)
+
