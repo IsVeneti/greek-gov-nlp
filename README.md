@@ -15,7 +15,7 @@ reused whenever it's needed.
 
 ## How it works
 
-The program uses NER [spaCy](https://github.com/explosion/spaCy) to
+The program uses [spaCy](https://github.com/explosion/spaCy) NER to
 extract the monetary information from the subjects of a decision. Using
 [doccano](https://github.com/doccano/doccano), a custom labeled dataset was
 created and added to the existing model (el_core_news_lg). The new model
