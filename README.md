@@ -23,7 +23,7 @@ created and added to the existing model (el_core_news_lg). The new model
 the decisions in the [diavgeia](https://www.diavgeia.gov.gr/) API, and saved
 alongside the existing metadata. 
 
-After that, the results may be provided create a bar for the total exchanged 
+After that, the results may be provided to create a bar for the total exchanged 
 currency compared to the selected metadata.
 
 
